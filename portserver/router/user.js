@@ -32,7 +32,7 @@ router.post('/register',(req,res)=>{
 	pool.query(sql,[obj],(err,rs)=>{
     if(err) throw err;
     // 如果返回结果中影响的行数大于0，则添加数据成功
-		console.log(rs.affectedRows);
+		// console.log(rs.affectedRows);
     if(rs.affectedRows>0){
       res.send('1');
     }else{
@@ -57,6 +57,8 @@ router.post('/login',(req,res)=>{
     }
   });
 })
+
+
 
 // 导出路由对象
 module.exports=router;

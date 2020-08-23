@@ -8,7 +8,7 @@ const bodyParser=require('body-parser');
 // 用户路由
 const  useRouter=require('./router/user.js')
 // 商品路由
-// const  proRouter=require('./router/product.js')
+const  proRouter=require('./router/product.js')
 // 创建web 服务器
 const server=express();
 // 将cors作为server的中间件使用
@@ -30,5 +30,5 @@ server.use(bodyParser.urlencoded({
 
 // 挂载服务器
 server.use('/user',useRouter);
-// server.use('/pro',proRouter);
+server.use('/pro',proRouter);
 

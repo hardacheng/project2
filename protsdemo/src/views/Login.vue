@@ -129,6 +129,7 @@ label {
 }
 </style>
 <script>
+import qs from "qs";
 export default {
   data() {
     return {
@@ -172,7 +173,11 @@ export default {
         this.axios
           .post(
             "/user/login",
-            "phone=" + this.phone + "&password=" + this.password
+            qs.stringify({
+              phone: this.phone,
+              password: this.password,
+            })
+            // "phone=" + this.phone + "&password=" + this.password
           )
           .then((res) => {
             // console.log(res.data, typeof res.data);

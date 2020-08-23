@@ -19,15 +19,15 @@
         <span>
           <a href="/login">登录/注册</a>
         </span>
-        <span style="margin-left:50px;position:relative" @mouseover="ph1()" @mouseout="ph2()">
+        <span style="margin-left:50px;position:relative" class="ph1">
           手机版
-          <div :style="dip" class="ph" @mouseout="ph2()">
+          <div  class="ph2">
             <img src="../../assets/state/intl.jpg" height="80">
           </div>
         </span>
-        <span style="margin-left:50px"  @mouseover="sho1()" @mouseout="sho2()">
+        <span style="margin-left:50px" @mouseover="sho1()">
           购物袋{{count}}
-          <div class="shop1" :style="dia"  @mouseout="sho2()">
+          <div class="shop1" :style="dia"  @mouseout="sho2()" >
             <div class="sho">
               <div class="shotop"></div>
               <div class="til">购物袋</div>
@@ -42,9 +42,9 @@
             </div>
           </div>
         </span>
-        <span class="sousuo" style="margin-left:50px" @mouseover="sou()">
+        <span class="sousuo" style="margin-left:50px" @mouseover="sou">
           搜索
-          <div  class="search" :style="dis" @mouseout="sou2()">
+          <div  class="search" :style="dis" @mouseout="sou2">
             <form action="/" method="">
               <button type="submit"></button>
               <input type="text" placeholder="请输入要搜索的内容">
@@ -61,7 +61,7 @@
         <span>关于我们</span>
       </div>
     </div>
-    <div id="select" @mouseover="showList" @mouseout="hideList" :class="{show:showText,hide:hideText}">
+    <div id="select" @mouseover="showList" @mouseout="hideList" :style="list">
       <div id="select_biao" style="padding-left:214px">
         <div class="select_list">
           <p class="title texiao">女装</p>
@@ -99,15 +99,19 @@
 <style>
 #head {
   margin: 0 auto;
-  width: 1200px;
   height: 120px;
   position: relative;
   z-index: 999;
 }
 #head1 {
+  height: 120px;
+  width: 1200px;
   font-size: 13px;
   padding: 15px 0 10px;
-  height: 120px;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+  margin: 0px auto;
 }
 #head a {
   display: inline-block;
@@ -221,11 +225,15 @@
   color: #1B1B1B !important;
   border: 2px solid #1B1B1B;
 }
-.ph{
+.ph1:hover .ph2{display: block;}
+.ph2:hover{display: block;}
+.ph2{
+  display: none;
   position: absolute;
   top: 22px;
   left: -20px;
 }
+
 #right .sousuo{
   position: relative;
   margin-left: 30px;
@@ -279,14 +287,16 @@
 }
 #select{
   width: 100%;
+  height: 350px;
   background-color: rgb(240, 240, 240);
   opacity: 0.95;
-  height: 350px;
   position: absolute;
   top: 100%;
-  border-bottom-width: 1px;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  transition: all 0.3s ease-in;
+  /* border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: rgb(224, 224, 224);
+  border-bottom-color: rgb(224, 224, 224); */
 }
 #select_biao{
   padding-top: 25px;
@@ -311,12 +321,12 @@
   width: 60px;
 }
 .texiao{
-  transition: all 0.1s ease-in;
+  transition: all 0.3s ease-in;
   border-bottom-color: #000 !important;
 }
 a:hover{color: #337ab7 !important;}
-.show{display: block;}
-.hide{display: none;}
+/* .show{display: block;}
+.hide{display: none;} */
 </style>
 <script>
 export default {
@@ -324,36 +334,28 @@ export default {
     return {
       count: "",
       // 添加各个选项卡的显示隐藏状态
-      showText:false,
-      hideText:true,
+      // showText:false,
+      // hideText:true,
+      list:'display:none;height:0px;',
       dis:'display:none',
-      dip:'display:none',
-      dia:'display:none',
-    };
+      dia:'display:none'
+    }
   },
   mounted(){
     
   },
   methods: {
    showList(){
-      this.showText=!this.showText;
-      this.hideText=!this.hideText;
+      this.list='display:block;';
    },
    hideList(){
-      this.showText=!this.showText;
-      this.hideText=!this.hideText;
+      this.list='display:none;';
    },
    sou(){
      this.dis='display:block';
    },
    sou2(){
      this.dis='display:none';
-   },
-   ph1(){
-     this.dip='display:block';
-   },
-   ph2(){
-     this.dip='display:none';
    },
    sho1(){
      this.dia='display:block';

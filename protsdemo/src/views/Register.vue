@@ -188,6 +188,7 @@ label {
 }
 </style>
 <script>
+import qs from 'qs'
 export default {
   data() {
     return {
@@ -217,7 +218,11 @@ export default {
       let phoneRegExp = /^1[3-9]\d{9}$/;
       if (phoneRegExp.test(this.phone)) {
         // 发送get请求验证数据库phone是否唯一
-        this.axios.get("/user/check?phone=" + this.phone).then((res) => {
+        this.axios.get("/user/check",{
+          params:{phone:this.phone}
+        } 
+        // + this.phone
+        ).then((res) => {
           // console.log(res.data,typeof res.data);
           // 返回1表示数据库没有这个号码，否则表示有相同号码
           if (res.data == 1) {
@@ -258,22 +263,32 @@ export default {
         this.axios
           .post(
             "/user/register",
-            "wname=" +
-              this.wname +
-              "&password=" +
-              this.password +
-              "&phone=" +
-              this.phone +
-              "&gender=" +
-              this.genderx
+              qs.stringify({
+                wname:this.wname,
+                password:this.password,
+                phone:this.phone,
+                gender:this.genderx
+              })
+            
+            // "wname=" +
+            //   this.wname +
+            //   "&password=" +
+            //   this.password +
+            //   "&phone=" +
+            //   this.phone +
+            //   "&gender=" +
+            //   this.genderx
+            // 更改请求头信息
+            // {header:{'content-type':'application/x-www-form-urlencoeded'}}
           )
           .then((res) => {
             // console.log(res.data, typeof res.data);
-            //注册成功后跳转首页，否则
+            //注册成功后跳转首页
             this.$router.push("/");
           });
       } else {
         window.alert("注册失败");
+        // 刷新页面
         location.reload();
       }
     },
