@@ -5,9 +5,18 @@
       <div class="bread">
         <router-link to="/">首页</router-link>
         /
-        <span><router-link to="/">dsjakasdja</router-link>/</span>
-        <span><router-link to="/">d的咳嗽啊</router-link>/</span>
-        <span><router-link to="/">长袖衬衫</router-link>/</span>
+        <span>
+          <router-link :to="like.o1url">{{like.o1}}</router-link>
+          /
+        </span>
+        <span>
+          <router-link :to="like.o2url">{{like.o2}}</router-link>
+          /
+        </span>
+        <span>
+          <router-link :to="like.o3url">{{like.o3}}</router-link>
+          /
+        </span>
         详细
       </div>
       <div class="borderh"></div>
@@ -17,20 +26,20 @@
           <div class="pre" @click="ptop"></div>
           <div class="smalll">
             <div class="p_list" :style="top_gun">
-              <div class="p_one" data-img="">
-                <img src="../assets/detail/1_4.jpg" alt="">
+              <div class="p_one" @click="huan1">
+                <img :src="like.smimg1" alt="">
               </div>
-              <div class="p_one" data-img="">
-                <img src="../assets/detail/1_5.jpg" alt="未显示">
+              <div class="p_one" @click="huan2">
+                <img :src="like.smimg2" alt="未显示">
               </div>
-              <div class="p_one" data-img="">
-                <img src="http://localhost:3003/detail/1_5.jpg" alt="未显示">
+              <div class="p_one" @click="huan3">
+                <img :src="like.smimg3" alt="未显示">
               </div>
-              <div class="p_one" data-img="">
-                <img src="../assets/detail/1_5.jpg" alt="未显示">
+              <div class="p_one" @click="huan4">
+                <img :src="like.smimg4" alt="未显示">
               </div>
-              <div class="p_one" data-img="">
-                <img src="../assets/detail/1_5.jpg" alt="未显示">
+              <div class="p_one" @click="huan5">
+                <img :src="like.smimg5" alt="未显示">
               </div>
             </div>
           </div>
@@ -40,26 +49,26 @@
         <!-- 大图开始 -->
         <div class="bigimage">
           <div class="bigshow">
-            <img src="http://localhost:3003/detail/1.jpg" alt="">
+            <img :src="bgimg" alt="未找到">
           </div>
         </div>
         <!-- 大图结束 -->
         <!-- 右边详情开始 -->
         <div class="dright">
-          <h3>标签title{{}}</h3>
-          <h4>￥数字{{}}</h4>
+          <h3>{{like.title}}</h3>
+          <h4>￥{{like.price}}</h4>
           <div class="kuan">
-            <b>款号：</b>{{sadsa}}
+            <b>款号：</b>{{$route.query.xid}}
           </div>
           <div class="kuan">
             <b>颜色：</b>
             <div class="dcolor">
-              <img src="http://localhost:3003/detail/1a.jpg" alt="">
+              <img :src="like.image" alt="">
             </div>
           </div>
           <div class="kuan">
             <b>尺码：</b>
-            <div class="dsize">我是{{adsa}}</div>
+            <div class="dsize">{{like.s1}}</div>
           </div>
           <div class="kuan">
             <b>数量：</b>
@@ -86,7 +95,7 @@
             <p>
               <b>商品描述：</b>
             </p>
-            <div>{{$route.query.xid}}</div>
+            <div>{{like.pdesc}}</div>
           </div>
           <!-- 尺码 -->
           <div class="dsze">
@@ -105,18 +114,18 @@
             <div class="dsid" :style="stable">
               <table class="dtab">
                 <tr>
-                  <th>da</th>
-                  <th>da</th>
-                  <th>da</th>
-                  <th>da</th>
-                  <th>da</th>
+                  <th>{{like.ts1}}</th>
+                  <th>{{like.ts2}}</th>
+                  <th>{{like.ts3}}</th>
+                  <th>{{like.ts4}}</th>
+                  <th>{{like.ts5}}</th>
                 </tr>
                 <tr class="dld">
-                  <td>sdas</td>
-                  <td>sdas</td>
-                  <td>sdas</td>
-                  <td>sdas</td>
-                  <td>sdas</td>
+                  <td>{{like.s1}}</td>
+                  <td>{{like.s2}}</td>
+                  <td>{{like.s3}}</td>
+                  <td>{{like.s4}}</td>
+                  <td>{{like.s5}}</td>
                 </tr>
               </table>
             </div>
@@ -126,7 +135,7 @@
               <p>
                 <b>面料说明：</b>
               </p>
-              <small>100% 蚕丝{{dsa}}</small>
+              <small>{{like.shuoming}}</small>
           </div>
         </div>
         <!-- 右边详情结束 -->
@@ -140,31 +149,41 @@
         <div class="ran_list">
           <div class="ranimg">
             <a href="#">
-              <img src="../assets/detail/9.jpg" alt="">
+              <img :src="like.img1" alt="">
             </a>
           </div>
         </div>
         <div class="ran_list">
           <div class="ranimg">
             <a href="#">
-              <img src="../assets/detail/9.jpg" alt="">
+              <img :src="like.img2" alt="">
             </a>
           </div>
         </div>
         <div class="ran_list">
           <div class="ranimg">
             <a href="#">
-              <img src="../assets/detail/9.jpg" alt="">
+              <img :src="like.img3" alt="">
             </a>
           </div>
         </div>
         <div class="ran_list">
           <div class="ranimg">
             <a href="#">
-              <img src="../assets/detail/9.jpg" alt="">
+              <img :src="like.img4" alt="">
             </a>
           </div>
         </div>
+        <div class="ran_list">
+          <div class="ranimg">
+            <a href="#">
+              <img :src="like.img5" alt="">
+            </a>
+          </div>
+        </div>
+        
+        
+        
       </div>
     </div>
     <!-- 随机取产品结束 -->
@@ -183,8 +202,11 @@ export default {
       requesta:'',
       // 保存产品页传过来的产品总数
       counts:0,
+      xid:'',
       // 保存随机生成四个id的数组循环出猜您喜欢
-      like:[],
+      like:{},
+      // 保存详情页大图
+      bgimg:''
     }
   },
   methods:{
@@ -193,22 +215,21 @@ export default {
     load(){
       this.axios.get('/pro/'+this.requesta).then(res=>{
         console.log(res.data)
+        // console.log(res)
+        this.like=res.data;
+        console.log(this.like)
+        this.bgimg=this.like.bgimg1;
       })
     },
-    // 先得到传递过来的产品类别总数，在猜你喜欢随机出四个小于产品总数的数组
-    getLike(){
+    // 先得到传递过来的产品类别总数，在猜你喜欢随机出五个小于产品总数的数据
+    // 根据传过来的产品的xid参数去请求多个与产品相关的详细数据
+    getDetail(){
+      this.xid=this.$route.query.xid;
       this.counts=this.$route.query.counts;
-      // 本该这样写，数据不够this.requesta= 'random?id='+Math.floor(Math.random()*this.counts);
-      this.requesta= 'random?id1='+Math.floor(Math.random()*40)+'&id2='+Math.floor(Math.random()*40)+'&id3='+Math.floor(Math.random()*40)+'&id4='+Math.floor(Math.random()*40);
-      // this.load();    
-      // this.requesta= 'random?id2='+Math.floor(Math.random()*40);
-      // // this.load();    
-      // this.requesta= 'random?id3='+Math.floor(Math.random()*40);
-      // // this.load();    
-      // this.requesta= 'random?id4='+Math.floor(Math.random()*40);
+      // 数据量不够this.requesta= 'random?id='+Math.floor(Math.random()*this.counts);
+      this.requesta= 'random?id1='+Math.floor(Math.random()*40)+'&id2='+Math.floor(Math.random()*40)+'&id3='+Math.floor(Math.random()*40)+'&id4='+Math.floor(Math.random()*40)+'&id5='+Math.floor(Math.random()*40)+'&xid='+this.xid;
       this.load();
     },
-
     ptop(){
       this.top_gun='top:-175px';
     },
@@ -224,10 +245,25 @@ export default {
       this.dfirst='';
       this.dsecond='';
       this.stable='';
+    },
+    huan1(){
+      this.bgimg=this.like.bgimg1;
+    },
+    huan2(){
+      this.bgimg=this.like.bgimg2;
+    },
+    huan3(){
+      this.bgimg=this.like.bgimg3;
+    },
+    huan4(){
+      this.bgimg=this.like.bgimg4;
+    },
+    huan5(){
+      this.bgimg=this.like.bgimg5;
     }
   },
   mounted(){
-    this.getLike();
+    this.getDetail();
     console.log(this.$route.query)
   }
 }

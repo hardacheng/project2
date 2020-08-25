@@ -23,32 +23,32 @@
     <div class="content">
       <!-- 内容页面信息数据库信息已经建立 -->
       <div class="con1">
-        <a href="#">
-          <img src="../assets/state/cons/content1.jpg" alt="" >
-        </a>
+        <router-link :to="contentx[0].conurlto">
+          <img :src="contentx[0].conurl" alt="" >
+        </router-link>
       </div>
       <div class="con2">
-        <img src="../assets/state/cons/content2.jpg" alt="" >
+        <img :src="contentx[1].conurl" alt="" >
         <a href="/register" class="area1"></a>
         <a href="/login" class="area2"></a>
       </div>
       <div class="con3">
-        <a href="#">
-          <img src="../assets/state/cons/content3.jpg" alt="" >
-        </a>
+        <router-link :to="contentx[2].conurlto">
+          <img :src="contentx[2].conurl" alt="" >
+        </router-link>
       </div>
       <div class="con4">
-          <img src="../assets/state/cons/content4.jpg" alt="" >
+          <img :src="contentx[3].conurl" alt="" >
         <a href="#" alt="woman" class="area3"></a>
         <a href="#" alt="man" class="area4"></a>
       </div>
        <!-- 视频开始 -->
       <div class="vio5">
-        <video src="../assets/state/cons/content5.mp4" controls="controls" poster="../assets/state/cons/01094450.jpg"></video>
+        <video :src="contentx[4].conurl" controls="controls" :poster="contentx[6].conurl"></video>
       </div>
     <!-- 视频结束 -->
       <div class="con6">
-          <img src="../assets/state/cons/content6.jpg" alt="" >
+          <img :src="contentx[5].conurl" alt="" >
         <a href="#" alt="woman" class="area5"></a>
         <a href="#" alt="man" class="area6"></a>
       </div>
@@ -64,6 +64,7 @@ export default{
   data(){
     return {
       banList:[],
+      contentx:[],
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination',
@@ -91,14 +92,27 @@ export default{
     getBannerList(){
       this.axios.get('/pro/bannerList')
       .then(res=>{
-        // console.log(res.data)
-        this.banList=res.data;
+        this.banList=res.data.obj1;
+        // console.log(this.banList)
+        this.contentx=res.data.obj2;
+        console.log(this.contentx)
+        // console.log(res.data);
+        // console.log(res.data.obj2);
+
       })
-    }
+    },
+    // gethome(){
+    //   this.axios.get('/pro/content')
+    //   .then(res=>{
+    //     console.log(res.data)
+    //     // console.log(res.data.conurlto)
+    //     this.banList=res.data;
+    //   })
+    // }
   },
   mounted(){
     this.getBannerList();
-    
+    // this.gethome();
   }
 
 }

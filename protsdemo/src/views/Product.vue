@@ -69,7 +69,6 @@
     <div id="product">
       <!-- 分页器 -->
       <div class="fenye">
-        <!-- 分页可能只有自己写了， -->
         <ul class="fen_list" v-if="pagecount<=7">
           <li :class="prex" @click="prel()">＜ Previous</li>
           <li v-for="v of pagecount" :key="v" @click="vgo(v)" :class="vst" >{{v}}</li>
@@ -100,15 +99,6 @@
             <input type="button" class="binput"  value="GO" @click="go">
           </li>
         </ul> -->
-        <!-- <div class="block">
-          <span class="demonstration"></span>
-          <el-pagination layout="prev, pager, next" :total="50"></el-pagination>
-        </div> -->
-
-        <!-- <div class="block">
-          <span class="demonstration">大于 7 页时的效果</span>
-          <el-pagination layout="prev, pager, next" :total="100"></el-pagination>
-        </div> -->
       </div>
     
       <!-- 根据价格区间筛选商品 ，根据输入的区间查询符合这个区间的产品拿到数据循环出来-->
@@ -295,7 +285,7 @@ export default {
     // this.getCount();
   },
   watch:{
-    // 监听页码变化从而调整前进后退的禁用情况（因为v-model不支持li元素，所以放弃）
+    // 监听页码变化从而调整前进后退的禁用情况
     page(){
       if(this.page==1){
         this.prex='disabled';
