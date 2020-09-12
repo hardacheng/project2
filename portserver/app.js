@@ -26,6 +26,8 @@ server.use(express.static('public'));
 // 使用body-parser中间件
 server.use(bodyParser.urlencoded({
   extended:false
+	  //如果设置为false，那么对URL-encoded的数据的解析采用querystring库；
+  //如果设置为true，那么采用qs库，允许将富对象和数组编码为url编码格式，允许使用url编码的json体验。
 }))
 
 // 挂载服务器

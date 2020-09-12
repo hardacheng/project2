@@ -14,22 +14,13 @@ router.get('/bannerList',(req,res)=>{
     sql='SELECT * FROM contentx';
     pool.query(sql,(err,rs)=>{
       if(err) throw err;
-      console.log(rs);
+      // console.log(rs);
       let obj2=rs;
       res.send({message:"查询成功",code:1,obj1:obj1,obj2:obj2});
     })
   })
 })
-// 首页加载API
-// 要和轮播图的数据一起返回
-// router.get('/content',(req,res)=>{
-  // let sql='SELECT * FROM contentx';
-  // pool.query(sql,(err,rs)=>{
-  //   if(err) throw err;
-  //   // console.log(rs);
-  //   res.send(rs.data);
-  // })
-// })
+
 // 商品列表API
 router.get('/products',(req,res)=>{
   let sql='SELECT count(pid) AS count FROM product';

@@ -129,7 +129,7 @@
             <!-- 声明式传参 -->
             <router-link :to="{path:'/detail',query:{xid:v.xid,counts:counts}}" target= '_blank' >
               <div class="prod_a" style="display: block;">
-                  <img :src="v.image1" alt />
+                  <img v-lazy="v.image1" alt />
               </div>
               <!-- <div class="prod_b" :style="imgb" @mouseout="imgChange2">
                   <router-link to="">

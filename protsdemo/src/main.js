@@ -30,6 +30,9 @@ Vue.use(VueAwesomeswiper)
 // 引用头部尾部组件
 Vue.component('Head',Head);
 Vue.component('Foot',Foot);
+// 安装引入懒加载组件
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
 
 
 new Vue({
